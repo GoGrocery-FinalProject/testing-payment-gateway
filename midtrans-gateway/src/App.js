@@ -1,14 +1,7 @@
 import logo from './logo.svg'
 import './App.css'
 import axios from 'axios'
-import midtransClient from 'midtrans-client'
 import { useState } from 'react'
-
-let snap = new midtransClient.Snap({
-	isProduction: false,
-	serverKey: 'SB-Mid-server-OkJLecqkB5bPgBQhcPsJCKWY',
-	clientKey: 'SB-Mid-client-sW5AHuqn__lVIlq3',
-})
 
 function App() {
 	const [token, setToken] = useState('')
@@ -22,14 +15,12 @@ function App() {
 				console.log(data)
 				setLink(data.link)
 				setToken(data.transactionToken)
-				// snap.pay(data.transactionToken)
 			})
 			.catch(console.log)
 	}
 
 	function goPayment() {
-		//belum solved
-		snap.pay(token)
+		window.snap.pay(token)
 	}
 	return (
 		<div className="App">
@@ -50,11 +41,11 @@ function App() {
 						goPayment()
 					}}
 				>
-					payment
+					Snap Method
 				</button>
 				{link ? (
 					<button>
-						<a href={link}>GO TO Midtrans Payment</a>
+						<a href={link}>GO TO Midtrans Payment redirect method</a>
 					</button>
 				) : (
 					<p></p>
