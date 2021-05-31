@@ -9,7 +9,21 @@ function App() {
 	const getToken = () => {
 		axios({
 			url: 'http://localhost:3000',
-			method: 'GET',
+			method: 'POST',
+			data: {
+				gross_amount: 100000,
+				item_details: [
+					{
+						id: 'ITEM1',
+						price: 100000,
+						quantity: 1,
+						name: 'Midtrans Bear',
+						brand: 'Midtrans',
+						category: 'Toys',
+						merchant_name: 'Midtrans',
+					},
+				],
+			},
 		})
 			.then(({ data }) => {
 				console.log(data)
